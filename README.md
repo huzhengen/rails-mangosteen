@@ -8,3 +8,8 @@ docker run -v /home/mysql57/data:/var/lib/mysql57/data --name=mysql -it -p 3306:
 rails _5.2.6_ new rails-mangosteen --skip-bundle --database=mysql --skip-test --api
 ```
 
+验证码 model controller
+```
+rails g model ValidationCode
+rails g controller api/v1/validation_codes
+```
