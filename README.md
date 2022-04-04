@@ -12,4 +12,18 @@ rails _5.2.6_ new rails-mangosteen --skip-bundle --database=mysql --skip-test --
 ```
 rails g model ValidationCode
 rails g controller api/v1/validation_codes
+rails g controller Api::V1::ValidationCodes
+```
+
+item model controller
+```
+rails g model Item
+rails g controller api/v1/items
+rails g controller Api::V1::Items
+```
+
+分页
+```
+gem 'kaminari'
+rails g kaminari:config
 ```
