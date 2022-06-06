@@ -52,6 +52,9 @@ bin/rails db:migrate RAILS_ENV=test
 
 [Request spec](https://relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec)
 
+[`change` matcher](https://relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/change-matcher)
+
 ```
 bin/rails g rspec:request items
+bin/rails g rspec:request validation_codes
 ```
