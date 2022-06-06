@@ -2,17 +2,17 @@ class Api::V1::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     if item.save
-      render json: { resource: item }
+      render json: { resource: item }, status: 201
     else
       render json: { errors: item.errors }, status: :unprocessable_entity
     end
   end
 
   def index
-    render json: { resources: Item.page(params[:page] || 1).per(params[:per_page] || 5),
-                   pager: { total: Item.count,
+    render json: { resources: Item.page(params[:page] || 1).per(params[:per_page] || 10),
+                  pager: { total: Item.count,
                            page: params[:page] || 1,
-                           per_page: params[:per_page] || 5 } }
+                           per_page: params[:per_page] || 10 } }, status: 200
     # Item.where("id > ?", params[:start_id]).limit(100)
   end
 
