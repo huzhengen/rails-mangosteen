@@ -6,6 +6,9 @@ docker run -v /home/mysql57/data:/var/lib/mysql57/data --name=mysql -it -p 3306:
 创建项目
 ```
 rails _5.2.6_ new rails-mangosteen --skip-bundle --database=mysql --skip-test --api
+bundle exec rails db:drop
+bundle exec rails db:create
+bundle exec rails db:migrate
 ```
 
 验证码 model controller
@@ -26,4 +29,16 @@ rails g controller Api::V1::Items
 ```
 gem 'kaminari'
 rails g kaminari:config
+```
+
+[RSpec](https://github.com/rspec/rspec-rails/tree/5-1-maintenance)
+```
+bin/rails generate rspec:install
+```
+
+测试环境数据库
+```
+RAILS_ENV=test bin/rails db:create
+RAILS_ENV=test bin/rails db:migrate
+bin/rails db:migrate RAILS_ENV=test
 ```
