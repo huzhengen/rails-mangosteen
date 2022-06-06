@@ -58,3 +58,18 @@ bin/rails db:migrate RAILS_ENV=test
 bin/rails g rspec:request items
 bin/rails g rspec:request validation_codes
 ```
+
+```
+EDITOR="code --wait" bin/rails credentials:edit
+```
+
+已经提交到了 git，再添加到 .gitignore，无法忽略怎么办？
+```
+git rm -r --cached dist
+```
+
+--amend
+```
+git add .
+git commit --amend -m "update"
+```
