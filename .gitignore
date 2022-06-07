@@ -25,3 +25,5 @@
 /config/credentials/production.key
 
 /.idea
+
+*.log

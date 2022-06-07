@@ -80,3 +80,10 @@ git commit --amend -m "update"
 bin/rails generate mailer User
 UserMailer.welcome_email.deliver
 ```
+
+生成 API 文档 [rspec_api_documentation](https://github.com/zipmark/rspec_api_documentation)
+```
+gem 'rspec_api_documentation'
+bin/rake docs:generate
+npx http-server doc/api/ -p8001
+```
