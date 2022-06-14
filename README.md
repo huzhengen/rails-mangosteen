@@ -78,7 +78,11 @@ git commit --amend -m "update"
 发邮箱验证码
 ```
 bin/rails generate mailer User
-UserMailer.welcome_email.deliver
+# 使用 rails console 手动发送验证码
+rails c
+validation_code = ValidationCode.new email: 'xxx@xx.com', kind: 'sign_in', code: '123456'
+validation_code.save
+UserMailer.welcome_email('test@test.com').deliver
 ```
 
 生成 API 文档 [rspec_api_documentation](https://github.com/zipmark/rspec_api_documentation)
