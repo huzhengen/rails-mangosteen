@@ -91,3 +91,8 @@ gem 'rspec_api_documentation'
 bin/rake docs:generate
 npx http-server doc/api/ -p8001
 ```
+
+清空表
+```
+ValidationCode.destroy_all
+```
