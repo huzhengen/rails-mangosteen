@@ -6,7 +6,9 @@ resource "验证码" do
     parameter :email, type: :string
     let(:email) { "1@qq.com" }
 
-    example "发送验证码" do
+    example "请求发送验证码" do
+      # expect(UserMailer).to receive(:validation_code).with(email: email).and_return(double(deliver_now: true))
+      expect(UserMailer).to receive(:welcome_email).with(email)
       do_request
       expect(status).to eq 200
       expect(response_body).to eq "{}"
