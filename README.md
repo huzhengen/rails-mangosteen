@@ -103,3 +103,10 @@ npx http-server doc/api/ -p8001
 ```
 ValidationCode.destroy_all
 ```
+
+session controller
+```
+bin/rails g controller api/v1/sessions_controller
+```
+
+rspec 出错，试试 bundle exe rspec

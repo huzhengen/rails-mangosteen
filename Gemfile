@@ -30,6 +30,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 
 gem "kaminari"
 gem "rspec_api_documentation", path: "./vendor/rspec_api_documentation"
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
