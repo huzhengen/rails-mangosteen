@@ -69,6 +69,7 @@ bin/rails g rspec:request validation_codes
 ```
 EDITOR="code --wait" bin/rails credentials:edit
 EDITOR="code --wait" bin/rails credentials:edit --environment production
+# 使用上面的命令需要把 config 文件夹里的 master.key 和 credentials.yml.enc 删除
 ```
 
 已经提交到了 git，再添加到 .gitignore，无法忽略怎么办？
@@ -109,4 +110,9 @@ session controller
 bin/rails g controller api/v1/sessions_controller
 ```
 
-rspec 出错，试试 bundle exe rspec
+> rspec 出错，试试 bundle exe rspec
+
+me controller
+```
+bin/rails g controller api/v1/me_controller
+```
