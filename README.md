@@ -4,6 +4,13 @@ docker 启动 MySQL
 docker run -v /home/mysql57/data:/var/lib/mysql57/data --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
 ```
 
+M1 Mac docker 启动 数据库
+```
+docker run --platform linux/amd64 -v /Users/xxx/database/mysql57/data:/var/lib/mysql57/data --name=db-for-mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d --network=network1 mysql:5.7
+```
+
+M1 Mac 启动项目失败：https://github.com/RefugeRestrooms/refugerestrooms/pull/672
+
 创建项目
 
 ```
