@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Me", type: :request do
   describe "获取当前用户" do
-    it "获取" do
+    it "登陆后成功获取" do
       user = User.create email: '1@qq.com'
       post api_v1_session_path params: { email: "1@qq.com", code: '123456' }
       json = JSON.parse response.body
