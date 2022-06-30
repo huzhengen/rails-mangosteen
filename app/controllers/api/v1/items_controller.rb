@@ -9,11 +9,15 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def index
-    render json: { resources: Item.page(params[:page] || 1).per(params[:per_page] || 10),
-                  pager: { total: Item.count,
-                           page: params[:page] || 1,
-                           per_page: params[:per_page] || 10 } }, status: 200
-    # Item.where("id > ?", params[:start_id]).limit(100)
+    created_after =  params[:created_after] || '1970-01-01'
+    created_before =  params[:created_before] || '9999-12-31'
+    items = Item.where({created_at: created_after..created_before})
+      .page(params[:page])
+    render json: { resources: items, pager: {
+      page: params[:page] || 1,
+      per_page: Item.default_per_page,
+      count: Item.count
+    }}
   end
 
   def show
