@@ -1,6 +1,7 @@
 class Api::V1::ItemsController < ApplicationController
   def create
-    item = Item.new(item_params)
+    # item = Item.new(item_params)
+    item = Item.new amount: params[:amount]
     if item.save
       render json: { resource: item }, status: 201
     else
