@@ -10,9 +10,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def index
+    current_user_id = request.env['current_user_id']
+    return head :unauthorized if current_user_id.nil?
     created_after =  params[:created_after] || '1970-01-01'
     created_before =  params[:created_before] || '9999-12-31'
-    items = Item.where({created_at: created_after..created_before})
+    items = Item.where({user_id: current_user_id}).where({created_at: created_after..created_before})
       .page(params[:page])
     render json: { resources: items, pager: {
       page: params[:page] || 1,
