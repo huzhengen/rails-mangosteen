@@ -13,8 +13,8 @@ class Api::V1::SessionsController < ApplicationController
       render status: :not_found, json: { errors: '用户不存在' }
     else
       render status: :ok, json: { 
-        jwt: JWT.encode({ user_id: user.id }, Rails.application.credentials.hmac_secret, 'HS256')
-       }
+        jwt: user.generate_jwt
+      }
     end
   end
 end
