@@ -1,17 +1,17 @@
-docker 启动 MySQL
+Starting MySQL with docker
 
 ```bash
 docker run -v /home/mysql57/data:/var/lib/mysql57/data --name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
 ```
 
-M1 Mac docker 启动 数据库
+Starting MySQL with docker on M1 Mac
 ```
 docker run --platform linux/amd64 -v /Users/xxx/database/mysql57/data:/var/lib/mysql57/data --name=db-for-mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d --network=network1 mysql:5.7
 ```
 
-M1 Mac 启动项目失败：https://github.com/RefugeRestrooms/refugerestrooms/pull/672
+Failed to start project on M1 Mac: https://github.com/RefugeRestrooms/refugerestrooms/pull/672
 
-创建项目
+Create project
 
 ```
 rails _5.2.6_ new rails-mangosteen --skip-bundle --database=mysql --skip-test --api
@@ -20,7 +20,7 @@ bundle exec rails db:create
 bundle exec rails db:migrate
 ```
 
-验证码 model controller
+code model controller
 
 ```
 rails g model ValidationCode
@@ -36,7 +36,7 @@ rails g controller api/v1/items
 rails g controller Api::V1::Items
 ```
 
-分页
+Pagination
 
 ```
 gem 'kaminari'
@@ -49,7 +49,7 @@ rails g kaminari:config
 bin/rails generate rspec:install
 ```
 
-测试环境数据库
+Database for test environment
 
 ```
 RAILS_ENV=test bin/rails db:create
@@ -83,7 +83,7 @@ git add .
 git commit --amend -m "update"
 ```
 
-发邮箱验证码
+Send the verification code to the email address
 ```
 bin/rails generate mailer User
 # 使用 rails console 手动发送验证码
@@ -93,14 +93,14 @@ validation_code.save
 UserMailer.welcome_email('test@test.com').deliver
 ```
 
-生成 API 文档 [rspec_api_documentation](https://github.com/zipmark/rspec_api_documentation)
+Generate API documentation [rspec_api_documentation](https://github.com/zipmark/rspec_api_documentation)
 ```
 gem 'rspec_api_documentation'
 bin/rake docs:generate
 npx http-server doc/api/ -p8001
 ```
 
-清空表
+Emptying database tables
 ```
 ValidationCode.destroy_all
 ```
@@ -115,4 +115,12 @@ bin/rails g controller api/v1/sessions_controller
 me controller
 ```
 bin/rails g controller api/v1/me_controller
+```
+
+tags model controller
+```bash
+bin/rails g model tag user:references name:string sign:string deleted_at:datetime
+bin/rails db:migrate
+bin/rails g controller api/v1/tags_controller
+bin/rails db:migrate RAILS_ENV=test
 ```
