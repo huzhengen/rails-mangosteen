@@ -79,7 +79,7 @@ RSpec.describe "Items", type: :request do
       expect(response).to have_http_status(201)
       expect(Item.count).to eq(1)
     end
-    it "can create one item" do
+    xit "can create one item" do
       expect {
         post api_v1_items_path, params: { item: { amount: 100 } }
       }.to change(Item, :count).by(+1)
