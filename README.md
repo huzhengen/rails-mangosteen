@@ -71,6 +71,10 @@ EDITOR="code --wait" bin/rails credentials:edit
 EDITOR="code --wait" bin/rails credentials:edit --environment production
 # 使用上面的命令需要把 config 文件夹里的 master.key 和 credentials.yml.enc 删除
 ```
+```
+bin/rails console
+Rails.application.credentials.config
+```
 
 已经提交到了 git，再添加到 .gitignore，无法忽略怎么办？
 ```
@@ -123,4 +127,16 @@ bin/rails g model tag user:references name:string sign:string deleted_at:datetim
 bin/rails db:migrate
 bin/rails g controller api/v1/tags_controller
 bin/rails db:migrate RAILS_ENV=test
+```
+
+Linux
+
+```
+sudo adduser mangosteen
+apt-get update
+usermod -a -G docker mangosteen
+mkdir /home/mangosteen/.ssh
+cp ~/.ssh/authorized_keys /home/mangosteen/.ssh
+chown -R mangosteen:mangosteen /home/mangosteen/.ssh/
+chmod +x bin/pack_for_remote.sh bin/setup_remote.sh
 ```
